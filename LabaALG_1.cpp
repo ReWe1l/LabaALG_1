@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <set>
 #include <string>
+#include <Windows.h>
 
 using namespace std;
 
@@ -9,22 +10,25 @@ void printset(set <char> S) {
     for (char ch : S) {
         cout << ch << "  ";
     }
+    cout << "\nКоличество элементов: " << S.size();
     return;
 }
 
 int main()
 {
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "Russian");
     string promt;
     set <char> S;
     
-    cout << "Введите НЕПУСТУЮ строку (БЕЗ ПРОБЕЛОВ): ";
+    cout << "Введите НЕПУСТУЮ строку (БЕЗ ПРОБЕЛОВ И КИРИЛЛИЦЫ - ОНИ ЛОМАЮТ МНЕ ЖИЗНЬ!!!): ";
     getline(cin, promt);
-    if (promt.empty()) { cout << "Вы ввели пустую строку!!" << endl; return -1; }
+    if (promt.empty()) { cout << "Вы ввели пустую строку!!\n"; return -1; }
     else {
         for (char ch : promt) {
-            if (isspace(ch)) { cout << "В строке был встречен пробел!!";  return -1; }
-        } 
+            if ((isspace(ch)) || (ch >= 'А' && ch <= 'Я' || ch >= 'а' && ch <= 'я')) { cout << "В строке был встречен пробел или кириллица!!";  return -1; }
+        }
     }
 
     for (char ch : promt) {
