@@ -22,17 +22,18 @@ int main()
     string promt;
     set <char> S;
     
-    cout << "Введите НЕПУСТУЮ строку (БЕЗ ПРОБЕЛОВ И КИРИЛЛИЦЫ - ОНИ ЛОМАЮТ МНЕ ЖИЗНЬ!!!): ";
+    cout << "Введите НЕПУСТУЮ строку (БЕЗ КИРИЛЛИЦЫ): ";
     getline(cin, promt);
     if (promt.empty()) { cout << "Вы ввели пустую строку!!\n"; return -1; }
-    else {
-        for (char ch : promt) {
-            if ((isspace(ch)) || (ch >= 'А' && ch <= 'Я' || ch >= 'а' && ch <= 'я')) { cout << "В строке был встречен пробел или кириллица!!";  return -1; }
-        }
-    }
+    //else {
+    //    for (char ch : promt) {
+    //        if (ch >= 'А' && ch <= 'Я' || ch >= 'а' && ch <= 'я') { cout << "В строке была встречена кириллица!!";  return -1; }
+    //    }
+    //}
 
     for (char ch : promt) {
-        if ((ch == '+' || ch == '*' || ch == '-' || ch == '%' || ch == '/') || (ch >= 'E' && ch <= 'N') || (ch >= 'e' && ch <= 'n')) {
+/*        if (isspace(ch)) { return -1; }
+        else */if ((ch == '+' || ch == '*' || ch == '-' || ch == '%' || ch == '/') || (ch >= 'E' && ch <= 'N') || (ch >= 'e' && ch <= 'n')) {
             S.insert(ch);
         }
     }
